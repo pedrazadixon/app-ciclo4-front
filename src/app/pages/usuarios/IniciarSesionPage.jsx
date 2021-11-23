@@ -1,10 +1,11 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 
 const cardStyle = {
   width: "40rem",
 };
 
-class LoginPage extends React.Component {
+class IniciarSesionPage extends React.Component {
   render() {
     return (
       <main>
@@ -49,9 +50,9 @@ class LoginPage extends React.Component {
                 <div className="text-end mt-1">
                   <small>
                     <span> o </span>
-                    <a className="text-dark" href="##">
+                    <Link to="/registrarse" className="text-dark">
                       registrarse
-                    </a>
+                    </Link>
                   </small>
                 </div>
               </form>
@@ -63,4 +64,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default IniciarSesionPage;
