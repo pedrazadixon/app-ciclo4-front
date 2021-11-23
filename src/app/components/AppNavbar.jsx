@@ -1,32 +1,49 @@
-import * as React from 'react';
+import * as React from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapMarkedAlt, faCopy } from "@fortawesome/free-solid-svg-icons";
+
 class AppNavbar extends React.Component {
   render() {
     return (
-			<header>
-				<nav className="navbar navbar-expand-md navbar-dark bg-dark">
-					<a className="navbar-brand" href="javascript;"> React / Bootstrap </a>
-					<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-						<span className="navbar-toggler-icon"></span>
-					</button>
-					<div className="collapse navbar-collapse" id="navbarCollapse">
-						<ul className="navbar-nav mr-auto">
-							<li className="nav-item active">
-								<a className="nav-link" href="javascript;">Home <span className="sr-only">(current)</span></a>
-							</li>
-							<li className="nav-item">
-								<a className="nav-link" href="javascript;">Link</a>
-							</li>
-							<li className="nav-item">
-								<a className="nav-link disabled" href="javascript;">Disabled</a>
-							</li>
-						</ul>
-						<form className="form-inline mt-2 mt-md-0">
-							<input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"/>
-							<button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-						</form>
-					</div>
-				</nav>
-			</header>
+      <header className="p-3 bg-dark text-white">
+        <div className="container">
+          <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <img src="https://www.misiontic2022.gov.co/746/channels-645_logo_misiontic.png" alt="" height="54px" />
+
+            <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ms-lg-4">
+              <li>
+                <a href="#" class="nav-link text-secondary">
+                  <FontAwesomeIcon
+                    icon={faCopy}
+                    size="2x"
+                    className="d-block mx-auto mb-1"
+                  />
+                  Ordenes
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <FontAwesomeIcon
+                    icon={faMapMarkedAlt}
+                    size="2x"
+                    className="d-block mx-auto mb-1"
+                  />
+                  Destinos
+                </a>
+              </li>
+            </ul>
+
+            <div className="text-end">
+              <Link to="iniciar-sesion">
+                <button type="button" className="btn btn-outline-light">
+                  Cerrar Sesion
+                </button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </header>
     );
   }
 }

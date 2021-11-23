@@ -43,9 +43,12 @@ class IniciarSesionPage extends React.Component {
                   />
                 </div>
                 <div className="mt-3 text-end">
-                  <button type="submit" className="btn btn-dark">
+                  {/* <button type="submit" className="btn btn-dark">
                     Iniciar sesion
-                  </button>
+                  </button> */}
+                  <Link to="/ordenes" className="btn btn-dark">
+                    Iniciar sesion
+                  </Link>
                 </div>
                 <div className="text-end mt-1">
                   <small>
