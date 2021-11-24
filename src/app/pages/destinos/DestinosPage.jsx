@@ -47,7 +47,7 @@ const datatable = {
       acciones: (
         <React.Fragment>
           <Link
-            to="/ordenes/actualizar/1"
+            to="/destinos/editar/1"
             className="btn btn-sm m-1 btn-secondary"
           >
             Editar
@@ -64,7 +64,7 @@ const datatable = {
       acciones: (
         <React.Fragment>
           <Link
-            to="/ordenes/actualizar/1"
+            to="/destinos/editar/1"
             className="btn btn-sm m-1 btn-secondary"
           >
             Editar
@@ -81,7 +81,7 @@ const datatable = {
       acciones: (
         <React.Fragment>
           <Link
-            to="/ordenes/actualizar/1"
+            to="/destinos/editar/1"
             className="btn btn-sm m-1 btn-secondary"
           >
             Editar
@@ -98,7 +98,7 @@ const datatable = {
       acciones: (
         <React.Fragment>
           <Link
-            to="/ordenes/actualizar/1"
+            to="/destinos/editar/1"
             className="btn btn-sm m-1 btn-secondary"
           >
             Editar
@@ -115,7 +115,7 @@ const datatable = {
       acciones: (
         <React.Fragment>
           <Link
-            to="/ordenes/actualizar/1"
+            to="/destinos/editar/1"
             className="btn btn-sm m-1 btn-secondary"
           >
             Editar
@@ -132,7 +132,7 @@ const datatable = {
       acciones: (
         <React.Fragment>
           <Link
-            to="/ordenes/actualizar/1"
+            to="/destinos/editar/1"
             className="btn btn-sm m-1 btn-secondary"
           >
             Editar
@@ -151,11 +151,11 @@ class DestinosPage extends React.Component {
           <div className="col-12 d-flex justify-content-between">
             <h3>Lista de Destinos</h3>
             <div>
-              <Link to="/ordenes/crear" className="btn btn-primary me-2">
+              <Link to="/destinos/precio-km" className="btn btn-primary me-2">
                 <i className="fas fa-dollar-sign me-2"></i>
-                Precio Kilometro
+                Precio Kilometro ($5.500)
               </Link>
-              <Link to="/ordenes/crear" className="btn btn-dark">
+              <Link to="/destinos/crear" className="btn btn-dark">
                 <i className="fas fa-map-marked-alt me-2"></i>
                 Nuevo Destino
               </Link>

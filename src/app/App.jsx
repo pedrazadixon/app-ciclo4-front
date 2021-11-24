@@ -10,6 +10,9 @@ import CrearOrdenPage from "app/pages/ordenes/CrearOrdenPage";
 import ActualizarOrdenPage from "app/pages/ordenes/ActualizarOrdenPage";
 import DetallesOrdenPage from "app/pages/ordenes/DetallesOrdenPage";
 import DestinosPage from "app/pages/destinos/DestinosPage";
+import CrearDestinoPage from "app/pages/destinos/CrearDestinoPage";
+import PrecioKmPage from "app/pages/destinos/PrecioKmPage";
+import EditarDestinoPage from "app/pages/destinos/EditarDestinoPage";
 
 class App extends Component {
   render() {
@@ -35,6 +38,13 @@ class App extends Component {
               component={DetallesOrdenPage}
             />
             <Route path="/destinos" exact component={DestinosPage} />
+            <Route path="/destinos/crear" exact component={CrearDestinoPage} />
+            <Route path="/destinos/precio-km" exact component={PrecioKmPage} />
+            <Route
+              path="/destinos/editar/:id"
+              exact
+              component={EditarDestinoPage}
+            />
             <Route exact component={Error404} />
           </Switch>
         </BrowserRouter>
