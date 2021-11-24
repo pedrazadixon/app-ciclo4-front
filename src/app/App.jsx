@@ -9,6 +9,7 @@ import OrdenesPage from "app/pages/ordenes/OrdenesPage";
 import CrearOrdenPage from "app/pages/ordenes/CrearOrdenPage";
 import ActualizarOrdenPage from "app/pages/ordenes/ActualizarOrdenPage";
 import DetallesOrdenPage from "app/pages/ordenes/DetallesOrdenPage";
+import DestinosPage from "app/pages/destinos/DestinosPage";
 
 class App extends Component {
   render() {
@@ -16,15 +17,24 @@ class App extends Component {
       <div id="App">
         <BrowserRouter>
           <Switch>
-            <Route exact={true} path="/">
+            <Route exact path="/">
               <Redirect to="/iniciar-sesion" />
             </Route>
             <Route path="/iniciar-sesion" exact component={IniciarSesionPage} />
             <Route path="/registrarse" exact component={RegistrarsePage} />
             <Route path="/ordenes" exact component={OrdenesPage} />
             <Route path="/ordenes/crear" exact component={CrearOrdenPage} />
-            <Route path="/ordenes/actualizar/:id" exact component={ActualizarOrdenPage} />
-            <Route path="/ordenes/detalles/:id" exact component={DetallesOrdenPage} />
+            <Route
+              path="/ordenes/actualizar/:id"
+              exact
+              component={ActualizarOrdenPage}
+            />
+            <Route
+              path="/ordenes/detalles/:id"
+              exact
+              component={DetallesOrdenPage}
+            />
+            <Route path="/destinos" exact component={DestinosPage} />
             <Route exact component={Error404} />
           </Switch>
         </BrowserRouter>

@@ -229,16 +229,16 @@ const datatable = {
   ],
 };
 
-class OrdenesPage extends React.Component {
+class DestinosPage extends React.Component {
   render() {
     return (
       <LayoutDashboard>
         <div className="row my-4">
           <div className="col-12 d-flex justify-content-between">
-            <h3>Lista de Ordenes</h3>
+            <h3>Lista de Destinos</h3>
             <Link to="/ordenes/crear" className="btn btn-dark">
-              <i className="fas fa-copy me-2"></i>
-              Nueva Orden
+              <i className="fas fa-map-marked-alt me-2"></i>
+              Nuevo Destino
             </Link>
           </div>
         </div>
@@ -265,4 +265,4 @@ class OrdenesPage extends React.Component {
   }
 }
 
-export default OrdenesPage;
+export default DestinosPage;
