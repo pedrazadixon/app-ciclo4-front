@@ -27,8 +27,8 @@ function AppNavbar() {
                 to="/ordenes"
                 className={`nav-link ${
                   location.pathname.includes("ordenes")
-                    ? "text-secondary"
-                    : "text-white"
+                    ? "text-white"
+                    : "text-secondary"
                 }`}
               >
                 <FontAwesomeIcon
@@ -44,8 +44,8 @@ function AppNavbar() {
                 to="/destinos"
                 className={`nav-link ${
                   location.pathname.includes("destinos")
-                    ? "text-secondary"
-                    : "text-white"
+                    ? "text-white"
+                    : "text-secondary"
                 }`}
               >
                 <FontAwesomeIcon
@@ -61,8 +61,8 @@ function AppNavbar() {
                 to="/usuarios"
                 className={`nav-link ${
                   location.pathname.includes("usuarios")
-                    ? "text-secondary"
-                    : "text-white"
+                    ? "text-white"
+                    : "text-secondary"
                 }`}
               >
                 <FontAwesomeIcon

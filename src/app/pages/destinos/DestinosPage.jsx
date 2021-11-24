@@ -11,43 +11,23 @@ const datatable = {
       width: 50,
     },
     {
-      label: "creacion",
-      field: "creacion",
-      width: 100,
-    },
-    {
-      label: "nombre",
-      field: "nombre",
-      width: 100,
-    },
-    {
-      label: "descripcion",
-      field: "descripcion",
+      label: "origen",
+      field: "origen",
       width: 150,
     },
     {
-      label: "peso kg",
-      field: "peso",
-      width: 100,
+      label: "destino",
+      field: "destino",
+      width: 150,
     },
     {
-      label: "vehiculos",
-      field: "vehiculos",
-      width: 100,
+      label: "distancia kms.",
+      field: "distancia",
+      width: 150,
     },
     {
-      label: "recogida",
-      field: "recogida",
-      width: 100,
-    },
-    {
-      label: "entrega",
-      field: "entrega",
-      width: 100,
-    },
-    {
-      label: "estado",
-      field: "estado",
+      label: "tiempo mins.",
+      field: "tiempo",
       width: 100,
     },
     {
@@ -60,168 +40,102 @@ const datatable = {
   rows: [
     {
       id: 1,
-      creacion: "2021-01-01 17:54:15",
-      nombre: "Recogida material",
-      descripcion: "Recoger materiales para entregar en obra.",
-      peso: "61",
-      vehiculos: "3",
-      recogida: "bosa",
-      entrega: "fontibon",
-      estado: <b>Pendiente</b>,
+      origen: "bosa",
+      destino: "fontibon",
+      distancia: 5.5,
+      tiempo: 90,
       acciones: (
         <React.Fragment>
-          <Link to="/ordenes/detalles/1" className="btn btn-sm m-1 btn-warning">
-            Detalles
-          </Link>
           <Link
             to="/ordenes/actualizar/1"
             className="btn btn-sm m-1 btn-secondary"
           >
-            Actualizar
+            Editar
           </Link>
         </React.Fragment>
       ),
     },
     {
       id: 1,
-      creacion: "2021-01-01 17:54:15",
-      nombre: "Recogida material",
-      descripcion: "Recoger materiales para entregar en obra.",
-      peso: "61",
-      vehiculos: "3",
-      recogida: "bosa",
-      entrega: "fontibon",
-      estado: <b>Pendiente</b>,
+      origen: "bosa",
+      destino: "fontibon",
+      distancia: 5.5,
+      tiempo: 90,
       acciones: (
         <React.Fragment>
-          <Link to="/ordenes/detalles/1" className="btn btn-sm m-1 btn-warning">
-            Detalles
-          </Link>
           <Link
             to="/ordenes/actualizar/1"
             className="btn btn-sm m-1 btn-secondary"
           >
-            Actualizar
+            Editar
           </Link>
         </React.Fragment>
       ),
     },
     {
       id: 1,
-      creacion: "2021-01-01 17:54:15",
-      nombre: "Recogida material",
-      descripcion: "Recoger materiales para entregar en obra.",
-      peso: "61",
-      vehiculos: "3",
-      recogida: "bosa",
-      entrega: "fontibon",
-      estado: <b>Pendiente</b>,
+      origen: "bosa",
+      destino: "fontibon",
+      distancia: 5.5,
+      tiempo: 90,
       acciones: (
         <React.Fragment>
-          <Link to="/ordenes/detalles/1" className="btn btn-sm m-1 btn-warning">
-            Detalles
-          </Link>
           <Link
             to="/ordenes/actualizar/1"
             className="btn btn-sm m-1 btn-secondary"
           >
-            Actualizar
+            Editar
           </Link>
         </React.Fragment>
       ),
     },
     {
       id: 1,
-      creacion: "2021-01-01 17:54:15",
-      nombre: "Recogida material",
-      descripcion: "Recoger materiales para entregar en obra.",
-      peso: "61",
-      vehiculos: "3",
-      recogida: "bosa",
-      entrega: "fontibon",
-      estado: <b>Pendiente</b>,
+      origen: "bosa",
+      destino: "fontibon",
+      distancia: 5.5,
+      tiempo: 90,
       acciones: (
         <React.Fragment>
-          <Link to="/ordenes/detalles/1" className="btn btn-sm m-1 btn-warning">
-            Detalles
-          </Link>
           <Link
             to="/ordenes/actualizar/1"
             className="btn btn-sm m-1 btn-secondary"
           >
-            Actualizar
+            Editar
           </Link>
         </React.Fragment>
       ),
     },
     {
       id: 1,
-      creacion: "2021-01-01 17:54:15",
-      nombre: "Recogida material",
-      descripcion: "Recoger materiales para entregar en obra.",
-      peso: "61",
-      vehiculos: "3",
-      recogida: "bosa",
-      entrega: "fontibon",
-      estado: <b>Pendiente</b>,
+      origen: "bosa",
+      destino: "fontibon",
+      distancia: 5.5,
+      tiempo: 90,
       acciones: (
         <React.Fragment>
-          <Link to="/ordenes/detalles/1" className="btn btn-sm m-1 btn-warning">
-            Detalles
-          </Link>
           <Link
             to="/ordenes/actualizar/1"
             className="btn btn-sm m-1 btn-secondary"
           >
-            Actualizar
+            Editar
           </Link>
         </React.Fragment>
       ),
     },
     {
       id: 1,
-      creacion: "2021-01-01 17:54:15",
-      nombre: "Recogida material",
-      descripcion: "Recoger materiales para entregar en obra.",
-      peso: "61",
-      vehiculos: "3",
-      recogida: "bosa",
-      entrega: "fontibon",
-      estado: <b>Pendiente</b>,
+      origen: "bosa",
+      destino: "fontibon",
+      distancia: 5.5,
+      tiempo: 90,
       acciones: (
         <React.Fragment>
-          <Link to="/ordenes/detalles/1" className="btn btn-sm m-1 btn-warning">
-            Detalles
-          </Link>
           <Link
             to="/ordenes/actualizar/1"
             className="btn btn-sm m-1 btn-secondary"
           >
-            Actualizar
-          </Link>
-        </React.Fragment>
-      ),
-    },
-    {
-      id: 1,
-      creacion: "2021-01-01 17:54:15",
-      nombre: "Recogida material",
-      descripcion: "Recoger materiales para entregar en obra.",
-      peso: "61",
-      vehiculos: "3",
-      recogida: "bosa",
-      entrega: "fontibon",
-      estado: <b>Pendiente</b>,
-      acciones: (
-        <React.Fragment>
-          <Link to="/ordenes/detalles/1" className="btn btn-sm m-1 btn-warning">
-            Detalles
-          </Link>
-          <Link
-            to="/ordenes/actualizar/1"
-            className="btn btn-sm m-1 btn-secondary"
-          >
-            Actualizar
+            Editar
           </Link>
         </React.Fragment>
       ),
@@ -236,10 +150,16 @@ class DestinosPage extends React.Component {
         <div className="row my-4">
           <div className="col-12 d-flex justify-content-between">
             <h3>Lista de Destinos</h3>
-            <Link to="/ordenes/crear" className="btn btn-dark">
-              <i className="fas fa-map-marked-alt me-2"></i>
-              Nuevo Destino
-            </Link>
+            <div>
+              <Link to="/ordenes/crear" className="btn btn-primary me-2">
+                <i className="fas fa-dollar-sign me-2"></i>
+                Precio Kilometro
+              </Link>
+              <Link to="/ordenes/crear" className="btn btn-dark">
+                <i className="fas fa-map-marked-alt me-2"></i>
+                Nuevo Destino
+              </Link>
+            </div>
           </div>
         </div>
 
