@@ -6,6 +6,7 @@ import Error404 from "@/Error404";
 import IniciarSesionPage from "app/pages/usuarios/IniciarSesionPage";
 import RegistrarsePage from "app/pages/usuarios/RegistrarsePage";
 import OrdenesPage from "app/pages/ordenes/OrdenesPage";
+import CrearOrdenPage from "app/pages/ordenes/CrearOrdenPage";
 
 class App extends Component {
   render() {
@@ -16,10 +17,11 @@ class App extends Component {
             <Route exact={true} path="/">
               <Redirect to="/iniciar-sesion" />
             </Route>
-            <Route path="/iniciar-sesion" component={IniciarSesionPage} />
-            <Route path="/registrarse" component={RegistrarsePage} />
-            <Route path="/ordenes" component={OrdenesPage} />
-            <Route component={Error404} />
+            <Route path="/iniciar-sesion" exact component={IniciarSesionPage} />
+            <Route path="/registrarse" exact component={RegistrarsePage} />
+            <Route path="/ordenes" exact component={OrdenesPage} />
+            <Route path="/ordenes/crear" exact component={CrearOrdenPage} />
+            <Route exact component={Error404} />
           </Switch>
         </BrowserRouter>
       </div>

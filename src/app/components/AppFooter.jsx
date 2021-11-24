@@ -5,7 +5,7 @@ class AppFooter extends React.Component {
     return (
 			<footer className="footer">
 				<div className="container">
-					<span className="text-muted">Rights reserved to Yamen Sharaf and stuff</span>
+					<span className="text-muted">Mision TIC 2021 - Proyecto grupo 3</span>
 				</div>
 			</footer>
     );

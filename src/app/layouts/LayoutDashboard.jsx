@@ -7,7 +7,7 @@ class LayoutDashboard extends React.Component {
     return (
       <React.Fragment>
         <AppNavbar />
-        {this.props.children}
+        <div className="container">{this.props.children}</div>
         <AppFooter />
       </React.Fragment>
     );

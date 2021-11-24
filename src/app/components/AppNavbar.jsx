@@ -1,7 +1,11 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapMarkedAlt, faCopy } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMapMarkedAlt,
+  faCopy,
+  faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 
 class AppNavbar extends React.Component {
   render() {
@@ -35,10 +39,24 @@ class AppNavbar extends React.Component {
                   Destinos
                 </a>
               </li>
+              <li>
+                <a href="#" className="nav-link text-white">
+                  <FontAwesomeIcon
+                    icon={faUsers}
+                    size="2x"
+                    className="d-block mx-auto mb-1"
+                  />
+                  Usuarios
+                </a>
+              </li>
             </ul>
 
+            <div>
+              <p className="my-0 me-3">Nombre Apellido (Rol)</p>
+            </div>
+
             <div className="text-end">
-              <Link to="iniciar-sesion">
+              <Link to="/iniciar-sesion">
                 <button type="button" className="btn btn-outline-light">
                   Cerrar Sesion
                 </button>

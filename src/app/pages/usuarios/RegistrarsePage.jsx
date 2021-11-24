@@ -61,7 +61,7 @@ class RegistrarsePage extends React.Component {
                     Registrarse
                   </button> */}
                   <Link to="/ordenes" className="btn btn-dark">
-                    Iniciar sesion
+                    Registrarse
                   </Link>
                 </div>
                 <div className="text-end mt-1">
