@@ -13,6 +13,10 @@ import DestinosPage from "app/pages/destinos/DestinosPage";
 import CrearDestinoPage from "app/pages/destinos/CrearDestinoPage";
 import PrecioKmPage from "app/pages/destinos/PrecioKmPage";
 import EditarDestinoPage from "app/pages/destinos/EditarDestinoPage";
+import UsuariosPage from "app/pages/usuarios/UsuariosPage";
+import CrearUsuarioPage from "app/pages/usuarios/CrearUsuarioPage";
+import EditarUsuarioPage from "app/pages/usuarios/EditarUsuarioPage";
+import DetallesUsuarioPage from "app/pages/usuarios/DetallesUsuarioPage";
 
 class App extends Component {
   render() {
@@ -44,6 +48,18 @@ class App extends Component {
               path="/destinos/editar/:id"
               exact
               component={EditarDestinoPage}
+            />
+            <Route path="/usuarios" exact component={UsuariosPage} />
+            <Route path="/usuarios/crear" exact component={CrearUsuarioPage} />
+            <Route
+              path="/usuarios/editar/:id"
+              exact
+              component={EditarUsuarioPage}
+            />
+            <Route
+              path="/usuarios/detalles/:id"
+              exact
+              component={DetallesUsuarioPage}
             />
             <Route exact component={Error404} />
           </Switch>
