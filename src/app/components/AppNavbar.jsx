@@ -20,7 +20,7 @@ class AppNavbar extends React.Component {
 
             <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ms-lg-4">
               <li>
-                <a href="#" className="nav-link text-secondary">
+                <a href="##" className="nav-link text-secondary">
                   <FontAwesomeIcon
                     icon={faCopy}
                     size="2x"
@@ -30,7 +30,7 @@ class AppNavbar extends React.Component {
                 </a>
               </li>
               <li>
-                <a href="#" className="nav-link text-white">
+                <a href="##" className="nav-link text-white">
                   <FontAwesomeIcon
                     icon={faMapMarkedAlt}
                     size="2x"
@@ -40,7 +40,7 @@ class AppNavbar extends React.Component {
                 </a>
               </li>
               <li>
-                <a href="#" className="nav-link text-white">
+                <a href="##" className="nav-link text-white">
                   <FontAwesomeIcon
                     icon={faUsers}
                     size="2x"

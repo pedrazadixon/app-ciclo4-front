@@ -2,7 +2,7 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
 
-class OrdenesPage extends React.Component {
+class CrearOrdenPage extends React.Component {
   render() {
     return (
       <LayoutDashboard>
@@ -91,4 +91,4 @@ class OrdenesPage extends React.Component {
   }
 }
 
-export default OrdenesPage;
+export default CrearOrdenPage;
