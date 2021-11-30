@@ -22,7 +22,7 @@ function CrearDestinoPage() {
     event.preventDefault();
     const res = await axios.post("http://localhost:3001/destinos", form);
 
-    if (res.data && res.data.status == "success") {
+    if (res.data && res.data.status === "success") {
       toast.success("Guardado correctamente.");
       return history.push("/destinos");
     }
@@ -31,7 +31,6 @@ function CrearDestinoPage() {
 
   return (
     <LayoutDashboard>
-      {JSON.stringify(form)}
       <div className="row my-4">
         <div className="col-12 d-flex justify-content-between">
           <h3>Crear Destino</h3>
