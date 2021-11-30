@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "sass/app.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Error404 from "@/Error404";
-
 import IniciarSesionPage from "app/pages/usuarios/IniciarSesionPage";
 import RegistrarsePage from "app/pages/usuarios/RegistrarsePage";
 import OrdenesPage from "app/pages/ordenes/OrdenesPage";
@@ -22,6 +23,7 @@ class App extends Component {
   render() {
     return (
       <div id="App">
+        <ToastContainer />
         <BrowserRouter>
           <Switch>
             <Route exact path="/">
