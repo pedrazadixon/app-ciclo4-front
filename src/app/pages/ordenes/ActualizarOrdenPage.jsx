@@ -1,15 +1,58 @@
 import * as React from "react";
-import { Link, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { Link, useHistory, useParams } from "react-router-dom";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
 
 function ActualizarOrdenPage() {
+  const history = useHistory();
+
   let { id: ordenId } = useParams();
+
+  const [detalles, setDetalles] = useState({ usuario: {}, destino: {} });
+
+  const [form, setForm] = useState({});
+
+  useEffect(() => {
+    getDetalles();
+  }, []);
+
+  const getDetalles = async () => {
+    let res = await axios.get(
+      `${process.env.REACT_APP_MINTIC_API_URL}/ordenes/${ordenId}`
+    );
+    setDetalles(res.data.data);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async function (event) {
+    event.preventDefault();
+    const res = await axios.patch(
+      `${process.env.REACT_APP_MINTIC_API_URL}/ordenes/${ordenId}`,
+      form
+    );
+
+    if (res.data && res.data.status === "success") {
+      toast.success("Guardado correctamente.");
+      return history.push("/ordenes");
+    }
+    toast.error("Ocurrio un error.");
+  };
 
   return (
     <LayoutDashboard>
+      {JSON.stringify(form)}
       <div className="row my-4">
         <div className="col-12 d-flex justify-content-between">
-          <h3>Actualizar Orden {ordenId} </h3>
+          <h3>Actualizar Orden</h3>
         </div>
       </div>
       <div className="row">
@@ -21,49 +64,95 @@ function ActualizarOrdenPage() {
         <div className="col-12">
           <div className="card">
             <div className="card-body">
-              <div className="row">
-                <div className="col-6">
-                  <div className="mb-3">
-                    <label className="form-label">Nombre de la orden</label>
-                    <input
-                      type="email"
-                      readOnly
-                      className="form-control"
-                      value="Recogida material"
-                    />
+              <form onSubmit={handleSubmit}>
+                <div className="row">
+                  <div className="col-6">
+                    <div className="mb-3">
+                      <label className="form-label">Nombre de usuario</label>
+                      <input
+                        type="text"
+                        readOnly
+                        className="form-control"
+                        value={detalles.usuario.nombres || ""}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="col-6">
-                  <div className="mb-3">
-                    <label className="form-label">Descripcion</label>
-                    <input
-                      type="email"
-                      readOnly
-                      className="form-control"
-                      value="Recoger materiales para entregar en obra."
-                    />
-                  </div>
-                </div>
 
-                <div className="col-12">
-                  <div className="mb-3">
-                    <label className="form-label">Estado</label>
-                    <select className="form-select">
-                      <option value="">Pendiente</option>
-                      <option value="1">Opcion 1</option>
-                      <option value="2">Opcion 2</option>
-                    </select>
+                  <div className="col-6">
+                    <div className="mb-3">
+                      <label className="form-label">Descripcion</label>
+                      <input
+                        type="text"
+                        readOnly
+                        className="form-control"
+                        value={detalles.descripcion || ""}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-6">
+                    <div className="mb-3">
+                      <label className="form-label">Origen</label>
+                      <input
+                        type="text"
+                        readOnly
+                        className="form-control"
+                        value={detalles.destino.origen || ""}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-6">
+                    <div className="mb-3">
+                      <label className="form-label">Destino</label>
+                      <input
+                        type="text"
+                        readOnly
+                        className="form-control"
+                        value={detalles.destino.destino || ""}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="col-6">
+                    <div className="mb-1">
+                      <label className="form-label">
+                        <b>
+                          Estado Actual: <i>{detalles.estado}</i>
+                        </b>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="col-12">
+                    <div className="mb-3">
+                      <label className="form-label">Nuevo estado:</label>
+                      <select
+                        name="estado"
+                        required
+                        className="form-select"
+                        onChange={handleChange}
+                      >
+                        <option value="">Seleccionar...</option>
+                        <option value="Pendiente por despacho">
+                          Pendiente por despacho
+                        </option>
+                        <option value="Despachada">Despachada</option>
+                        <option value="Finalizada">Finalizada</option>
+                        <option value="Cancelada">Cancelada</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div className="col-12 d-flex justify-content-end my-3">
+                    <Link to="/ordenes" className="btn btn-danger ms-3">
+                      Cancelar
+                    </Link>
+                    <button type="submit" className="btn btn-success ms-3">
+                      Guardar
+                    </button>
                   </div>
                 </div>
-                <div className="col-12 d-flex justify-content-end my-3">
-                  <Link to="/ordenes">
-                    <button className="btn btn-danger ms-3">Cancelar</button>
-                  </Link>
-                  <Link to="/ordenes">
-                    <button className="btn btn-success ms-3">Guardar</button>
-                  </Link>
-                </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
