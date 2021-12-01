@@ -35,7 +35,7 @@ function FacturaOrdenPage() {
   return (
     <div className="m-2">
       <div className="row d-flex">
-        <div className="col-md-8">
+        <div className="" style={{ maxWidth: "950px" }}>
           <div className="card">
             <div className="d-flex flex-row p-2">
               {/* <img src="https://i.imgur.com/vzlPPh3.png" width="48" /> */}
@@ -162,7 +162,10 @@ function FacturaOrdenPage() {
       </div>
 
       <div className="row mt-2 d-print-none">
-        <div className="col-8 d-flex justify-content-center">
+        <div
+          className="d-flex justify-content-center"
+          style={{ maxWidth: "950px" }}
+        >
           <Link to="/ordenes" className="btn btn-danger mx-2">
             Volver
           </Link>
