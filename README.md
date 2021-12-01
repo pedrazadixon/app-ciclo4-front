@@ -2,6 +2,9 @@
 
 ## comenzar servidor de desarrollo
 
+
+### `copie el archivo .env.exaple a .env y remplace por la url donde esta el api`
+
 ### `npm start`
 
 ## construir sitio para produccion

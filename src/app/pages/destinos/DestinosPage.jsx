@@ -10,7 +10,9 @@ function DestinosPage() {
   const [dataTable, setDataTable] = useState(null);
 
   const eliminar = async (obj) => {
-    await axios.delete(`http://localhost:3001/destinos/${obj._id}`);
+    await axios.delete(
+      `${process.env.REACT_APP_MINTIC_API_URL}/destinos/${obj._id}`
+    );
     setDataTable((state) => {
       let newRows = state.rows.filter(function (row) {
         return row._id !== obj._id;
@@ -21,7 +23,9 @@ function DestinosPage() {
   };
 
   const makeTable = async () => {
-    let res = await axios.get("http://localhost:3001/destinos");
+    let res = await axios.get(
+      `${process.env.REACT_APP_MINTIC_API_URL}/destinos`
+    );
     let columns = [
       {
         label: "origen",
