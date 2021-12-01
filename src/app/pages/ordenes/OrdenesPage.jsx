@@ -2,6 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
 import { MDBDataTableV5 } from "mdbreact";
 
@@ -11,6 +12,19 @@ const OrdenesPage = function () {
   useEffect(() => {
     makeTable();
   }, []);
+
+  const eliminar = async (obj) => {
+    await axios.delete(
+      `${process.env.REACT_APP_MINTIC_API_URL}/ordenes/${obj._id}`
+    );
+    setDataTable((state) => {
+      let newRows = state.rows.filter(function (row) {
+        return row._id !== obj._id;
+      });
+      return { columns: state.columns, rows: newRows };
+    });
+    toast.success("Eliminado correctamente.");
+  };
 
   const makeTable = async () => {
     let res = await axios.get(
@@ -62,8 +76,6 @@ const OrdenesPage = function () {
       },
     ];
 
-    console.log(res.data.data);
-
     let rows = res.data.data;
 
     // agrego botones de acciones
@@ -79,12 +91,12 @@ const OrdenesPage = function () {
           >
             Actualizar
           </Link>
-          {/* <button
+          <button
             onClick={() => eliminar(obj)}
             className="btn btn-sm m-1 btn-danger"
           >
             Eliminar
-          </button> */}
+          </button>
         </React.Fragment>
       );
       return obj;
