@@ -1,15 +1,30 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
 
 function DetallesOrdenPage() {
   let { id: ordenId } = useParams();
 
+  const [detalles, setDetalles] = useState({ usuario: {}, destino: {} });
+
+  useEffect(() => {
+    getDetalles();
+  }, []);
+
+  const getDetalles = async () => {
+    let res = await axios.get(
+      `${process.env.REACT_APP_MINTIC_API_URL}/ordenes/${ordenId}`
+    );
+    setDetalles(res.data.data);
+  };
+
   return (
     <LayoutDashboard>
       <div className="row my-4">
         <div className="col-12 d-flex justify-content-between">
-          <h3>Detalles Orden {ordenId} </h3>
+          <h3>Detalles de Orden</h3>
         </div>
       </div>
       <div className="row">
@@ -22,51 +37,61 @@ function DetallesOrdenPage() {
           <div className="card">
             <div className="card-body px-4">
               <div className="row">
-                <table className="table">
+                <table className="table table-hover">
                   <tbody>
                     <tr>
                       <td className="fw-bold">ID</td>
-                      <td>1</td>
+                      <td>{detalles._id}</td>
                     </tr>
 
                     <tr>
                       <td className="fw-bold">Cracion</td>
-                      <td>2021-01-01 17:54:15</td>
+                      <td></td>
                     </tr>
 
                     <tr>
-                      <td className="fw-bold">nombre</td>
-                      <td>Recogida material</td>
+                      <td className="fw-bold">Nombre del usuario</td>
+                      <td>{detalles.usuario.nombres}</td>
                     </tr>
 
                     <tr>
-                      <td className="fw-bold">descripcion</td>
-                      <td>Recoger materiales para entregar en obra.</td>
+                      <td className="fw-bold">Descripcion</td>
+                      <td>{detalles.descripcion}</td>
                     </tr>
 
                     <tr>
-                      <td className="fw-bold">peso kg</td>
-                      <td>61</td>
+                      <td className="fw-bold">Peso (kg)</td>
+                      <td>{detalles.peso_kg}</td>
                     </tr>
 
                     <tr>
-                      <td className="fw-bold">vehiculos</td>
-                      <td>3</td>
+                      <td className="fw-bold">Vehiculos</td>
+                      <td>{detalles.cant_vehiculos}</td>
                     </tr>
 
                     <tr>
-                      <td className="fw-bold">recogida</td>
-                      <td>bosa</td>
+                      <td className="fw-bold">Recogida</td>
+                      <td>{detalles.destino.origen}</td>
                     </tr>
 
                     <tr>
-                      <td className="fw-bold">entrega</td>
-                      <td>fontibon</td>
+                      <td className="fw-bold">Entrega</td>
+                      <td>{detalles.destino.destino}</td>
                     </tr>
 
                     <tr>
-                      <td className="fw-bold">estado</td>
-                      <td>pendiente</td>
+                      <td className="fw-bold">Durcion (minutos)</td>
+                      <td>{detalles.destino.minutos}</td>
+                    </tr>
+
+                    <tr>
+                      <td className="fw-bold">Distancia (kms)</td>
+                      <td>{detalles.destino.distancia_km}</td>
+                    </tr>
+
+                    <tr>
+                      <td className="fw-bold">Estado</td>
+                      <td>{detalles.estado}</td>
                     </tr>
                   </tbody>
                 </table>

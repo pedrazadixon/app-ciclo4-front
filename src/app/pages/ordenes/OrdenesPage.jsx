@@ -72,7 +72,7 @@ const OrdenesPage = function () {
         label: "acciones",
         field: "acciones",
         sort: "disabled",
-        width: 180,
+        width: 200,
       },
     ];
 
@@ -85,6 +85,12 @@ const OrdenesPage = function () {
       obj._destino = `${obj.destino.destino}`;
       obj.acciones = (
         <React.Fragment>
+          <Link
+            to={`/ordenes/detalles/${obj._id}`}
+            className="btn btn-sm m-1 btn-warning"
+          >
+            Detalles
+          </Link>
           <Link
             to={`/ordenes/actualizar/${obj._id}`}
             className="btn btn-sm m-1 btn-secondary"

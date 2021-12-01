@@ -90,6 +90,7 @@ function CrearOrdenPage() {
                       <input
                         type="number"
                         required
+                        min="1"
                         name="peso_kg"
                         onChange={handleChange}
                         className="form-control"
@@ -103,6 +104,7 @@ function CrearOrdenPage() {
                       <input
                         type="number"
                         required
+                        min="1"
                         name="cant_vehiculos"
                         onChange={handleChange}
                         className="form-control"
