@@ -20,8 +20,6 @@ function PrecioKmPage() {
     delete res.data.data._id;
     delete res.data.data.__v;
 
-    console.log(res.data.data);
-
     setForm(res.data.data);
   };
 

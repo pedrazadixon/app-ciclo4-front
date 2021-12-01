@@ -10,6 +10,7 @@ import OrdenesPage from "app/pages/ordenes/OrdenesPage";
 import CrearOrdenPage from "app/pages/ordenes/CrearOrdenPage";
 import ActualizarOrdenPage from "app/pages/ordenes/ActualizarOrdenPage";
 import DetallesOrdenPage from "app/pages/ordenes/DetallesOrdenPage";
+import FacturaOrdenPage from "app/pages/ordenes/FacturaOrdenPage";
 import DestinosPage from "app/pages/destinos/DestinosPage";
 import CrearDestinoPage from "app/pages/destinos/CrearDestinoPage";
 import PrecioKmPage from "app/pages/destinos/PrecioKmPage";
@@ -42,6 +43,11 @@ class App extends Component {
               path="/ordenes/detalles/:id"
               exact
               component={DetallesOrdenPage}
+            />
+            <Route
+              path="/ordenes/factura/:id"
+              exact
+              component={FacturaOrdenPage}
             />
             <Route path="/destinos" exact component={DestinosPage} />
             <Route path="/destinos/crear" exact component={CrearDestinoPage} />

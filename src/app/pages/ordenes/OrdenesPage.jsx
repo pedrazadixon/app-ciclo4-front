@@ -61,18 +61,16 @@ const OrdenesPage = function () {
         field: "cant_vehiculos",
         width: 100,
       },
-
       {
         label: "estado",
         field: "estado",
         width: 100,
       },
-
       {
         label: "acciones",
         field: "acciones",
         sort: "disabled",
-        width: 200,
+        width: 265,
       },
     ];
 
@@ -96,6 +94,12 @@ const OrdenesPage = function () {
             className="btn btn-sm m-1 btn-secondary"
           >
             Actualizar
+          </Link>
+          <Link
+            to={`/ordenes/factura/${obj._id}`}
+            className="btn btn-sm m-1 btn-primary"
+          >
+            Factura
           </Link>
           <button
             onClick={() => eliminar(obj)}
