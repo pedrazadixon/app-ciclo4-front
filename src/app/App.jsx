@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../sass/app.scss";
+import "sass/app.scss";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
