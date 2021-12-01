@@ -51,7 +51,6 @@ function EditarDestinoPage() {
 
   return (
     <LayoutDashboard>
-      {JSON.stringify(form)}
       <div className="row my-4">
         <div className="col-12 d-flex justify-content-between">
           <h3>Editar Destino</h3>
