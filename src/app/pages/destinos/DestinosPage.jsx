@@ -8,6 +8,7 @@ import LayoutDashboard from "app/layouts/LayoutDashboard";
 
 function DestinosPage() {
   const [dataTable, setDataTable] = useState(null);
+  const [precioPorKm, setPrecioPorKm] = useState(0);
 
   const eliminar = async (obj) => {
     await axios.delete(
@@ -80,8 +81,16 @@ function DestinosPage() {
   };
 
   useEffect(() => {
+    getPrecioKm();
     makeTable();
   }, []);
+
+  const getPrecioKm = async () => {
+    let res = await axios.get(
+      `${process.env.REACT_APP_MINTIC_API_URL}/config/precio_km`
+    );
+    setPrecioPorKm(res.data.data.valor);
+  };
 
   return (
     <LayoutDashboard>
@@ -91,7 +100,7 @@ function DestinosPage() {
           <div>
             <Link to="/destinos/precio-km" className="btn btn-primary me-2">
               <i className="fas fa-dollar-sign me-2"></i>
-              Precio Kilometro ($5.500)
+              Precio Kilometro (${precioPorKm})
             </Link>
             <Link to="/destinos/crear" className="btn btn-dark">
               <i className="fas fa-map-marked-alt me-2"></i>
