@@ -1,0 +1,16 @@
+.mdb-datatable-entries {
+  display: none;
+}
+
+div[data-test="datatable-search"] {
+  justify-content: end;
+}
+
+.mdb-datatable-filter {
+  width: 100%;
+}
+.mdb-datatable-filter input {
+  width: 100% !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
