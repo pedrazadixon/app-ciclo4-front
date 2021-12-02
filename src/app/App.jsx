@@ -1,6 +1,7 @@
 import React from "react";
 import "sass/app.css";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import AuthRouter from "./AuthRouter";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Error404 from "@/Error404";
@@ -31,44 +32,56 @@ const App = function () {
           </Route>
           <Route path="/iniciar-sesion" exact component={IniciarSesionPage} />
           <Route path="/registrarse" exact component={RegistrarsePage} />
-          <Route path="/ordenes" exact component={OrdenesPage} />
+          <AuthRouter path="/ordenes" exact component={OrdenesPage} />
           <Route path="/ordenes/crear" exact component={CrearOrdenPage} />
-          <Route
+          <AuthRouter
             path="/ordenes/actualizar/:id"
             exact
             component={ActualizarOrdenPage}
           />
-          <Route
+          <AuthRouter
             path="/ordenes/detalles/:id"
             exact
             component={DetallesOrdenPage}
           />
-          <Route
+          <AuthRouter
             path="/ordenes/factura/:id"
             exact
             component={FacturaOrdenPage}
           />
-          <Route path="/destinos" exact component={DestinosPage} />
-          <Route path="/destinos/crear" exact component={CrearDestinoPage} />
-          <Route path="/destinos/precio-km" exact component={PrecioKmPage} />
-          <Route
+          <AuthRouter path="/destinos" exact component={DestinosPage} />
+          <AuthRouter
+            path="/destinos/crear"
+            exact
+            component={CrearDestinoPage}
+          />
+          <AuthRouter
+            path="/destinos/precio-km"
+            exact
+            component={PrecioKmPage}
+          />
+          <AuthRouter
             path="/destinos/editar/:id"
             exact
             component={EditarDestinoPage}
           />
-          <Route path="/usuarios" exact component={UsuariosPage} />
-          <Route path="/usuarios/crear" exact component={CrearUsuarioPage} />
-          <Route
+          <AuthRouter path="/usuarios" exact component={UsuariosPage} />
+          <AuthRouter
+            path="/usuarios/crear"
+            exact
+            component={CrearUsuarioPage}
+          />
+          <AuthRouter
             path="/usuarios/editar/:id"
             exact
             component={EditarUsuarioPage}
           />
-          <Route
+          <AuthRouter
             path="/usuarios/detalles/:id"
             exact
             component={DetallesUsuarioPage}
           />
-          <Route exact component={Error404} />
+          <AuthRouter exact component={Error404} />
         </Switch>
       </BrowserRouter>
     </div>
