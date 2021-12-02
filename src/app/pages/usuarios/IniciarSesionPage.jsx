@@ -39,7 +39,6 @@ const IniciarSesionPage = function () {
       localStorage.setItem("usuario", JSON.stringify(res.data.data));
 
       return history.push("/ordenes");
-      return;
     }
     toast.error("Ocurrio un error.");
   };
