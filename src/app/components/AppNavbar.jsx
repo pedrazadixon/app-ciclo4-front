@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkedAlt,
@@ -8,7 +8,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function AppNavbar() {
-  let location = useLocation();
+  const location = useLocation();
+  const history = useHistory();
+
+  const cerrarSesion = () => {
+    localStorage.removeItem("usuario");
+    history.push("/iniciar-sesion");
+  };
 
   return (
     <header className="p-3 bg-dark text-white">
@@ -80,11 +86,13 @@ function AppNavbar() {
           </div>
 
           <div className="text-end">
-            <Link to="/iniciar-sesion">
-              <button type="button" className="btn btn-outline-light">
-                Cerrar Sesion
-              </button>
-            </Link>
+            <button
+              onClick={cerrarSesion}
+              type="button"
+              className="btn btn-outline-light"
+            >
+              Cerrar Sesion
+            </button>
           </div>
         </div>
       </div>

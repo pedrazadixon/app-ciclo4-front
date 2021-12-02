@@ -1,49 +1,85 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const IniciarSesionPage = function () {
+  const history = useHistory();
+
+  const [form, setForm] = useState({});
+
+  const [disableLoginBtn, setDisableLoginBtn] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async function (event) {
+    event.preventDefault();
+
+    setDisableLoginBtn(true);
+
+    setTimeout(() => {
+      setDisableLoginBtn(false);
+    }, 1500);
+
+    const res = await axios.post(
+      `${process.env.REACT_APP_MINTIC_API_URL}/usuarios/iniciar-sesion`,
+      form
+    );
+
+    if (res.data && res.data.status === "success") {
+      toast.success("Bienvenido.");
+
+      localStorage.setItem("usuario", JSON.stringify(res.data.data));
+
+      return history.push("/ordenes");
+      return;
+    }
+    toast.error("Ocurrio un error.");
+  };
+
   return (
     <main>
       <div className="container d-flex justify-content-center">
         <div className="card mt-5" style={{ width: "40rem" }}>
           <div className="card-header text-center">Iniciar sesion</div>
 
-          <div
-            className="alert shadow-sm mx-4 mt-3 mb-0 alert-success"
-            role="alert"
-          >
-            <div>
-              <strong> Inicio correcto </strong>
-            </div>
-          </div>
-
           <div className="card-body">
-            <form action="##" method="POST" className="px-5 py-3">
+            <form onSubmit={handleSubmit} className="px-5 py-3">
               <div className="form-group mb-3">
                 <label>Usuario</label>
                 <input
+                  onChange={handleChange}
                   required
-                  name="usu_usuario"
-                  type="text"
+                  name="email"
+                  type="email"
                   className="form-control"
                 />
               </div>
               <div className="form-group mb-3">
                 <label>Contraseña</label>
                 <input
+                  onChange={handleChange}
                   required
-                  name="usu_password"
+                  name="contrasena"
                   type="password"
                   className="form-control"
                 />
               </div>
               <div className="mt-3 text-end">
-                {/* <button type="submit" className="btn btn-dark">
-                    Iniciar sesion
-                  </button> */}
-                <Link to="/ordenes" className="btn btn-dark">
+                <button
+                  type="submit"
+                  disabled={disableLoginBtn}
+                  className="btn btn-dark"
+                >
                   Iniciar sesion
-                </Link>
+                </button>
               </div>
               <div className="text-end mt-1">
                 <small>
