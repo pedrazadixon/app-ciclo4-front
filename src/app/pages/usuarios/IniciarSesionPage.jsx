@@ -1,15 +1,11 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-const cardStyle = {
-  width: "40rem",
-};
-
 const IniciarSesionPage = function () {
   return (
     <main>
       <div className="container d-flex justify-content-center">
-        <div className="card mt-5" style={cardStyle}>
+        <div className="card mt-5" style={{ width: "40rem" }}>
           <div className="card-header text-center">Iniciar sesion</div>
 
           <div
