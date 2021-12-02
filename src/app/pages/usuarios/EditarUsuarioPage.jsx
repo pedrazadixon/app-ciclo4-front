@@ -133,6 +133,7 @@ const EditarUsuarioPage = function () {
                       <label className="form-label">Contraseña</label>
                       <input
                         name="contrasena"
+                        minLength={6}
                         type="password"
                         onChange={handleChange}
                         className="form-control"

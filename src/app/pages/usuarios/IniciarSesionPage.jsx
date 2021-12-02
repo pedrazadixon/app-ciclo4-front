@@ -66,6 +66,7 @@ const IniciarSesionPage = function () {
                   onChange={handleChange}
                   required
                   name="contrasena"
+                  minLength={6}
                   type="password"
                   className="form-control"
                 />

@@ -110,6 +110,7 @@ const CrearUsuarioPage = function () {
                         type="password"
                         required
                         name="contrasena"
+                        minLength={6}
                         onChange={handleChange}
                         className="form-control"
                       />

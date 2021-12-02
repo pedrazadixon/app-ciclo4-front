@@ -1,84 +1,107 @@
 import * as React from "react";
+import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
+import axios from "app/utils/axios";
 
-import { Link } from "react-router-dom";
+const RegistrarsePage = () => {
+  const history = useHistory();
 
-const cardStyle = {
-  width: "40rem",
-};
+  const [form, setForm] = useState({});
 
-class RegistrarsePage extends React.Component {
-  render() {
-    return (
-      <main>
-        <div className="container d-flex justify-content-center">
-          <div className="card mt-5" style={cardStyle}>
-            <div className="card-header text-center">Registrarse</div>
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
-            <div
-              className="alert shadow-sm mx-4 mt-3 mb-0 alert-danger"
-              role="alert"
-            >
-              <div>
-                {" "}
-                <strong> Mensaje al usuario </strong>{" "}
+  const handleSubmit = async function (event) {
+    event.preventDefault();
+    const res = await axios.post(`/usuarios/registro`, form);
+
+    console.log(res);
+
+    if (res.data && res.data.status === "success") {
+      toast.success("Registro completado. Ahora puede iniciar sesion.");
+      return history.push("/iniciar-sesion");
+    }
+    toast.error("Ocurrio un error.");
+  };
+
+  return (
+    <main>
+      <div className="container d-flex justify-content-center">
+        <div className="card mt-5" style={{ width: "40rem" }}>
+          <div className="card-header text-center">Registrarse</div>
+
+          <div className="card-body">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group mb-3">
+                <label>Nombres</label>
+                <input
+                  required
+                  onChange={handleChange}
+                  name="nombres"
+                  className="form-control"
+                  type="text"
+                />
               </div>
-            </div>
 
-            <div className="card-body">
-              <form action="##" method="POST" className="px-5 py-3">
-                <div className="form-group mb-3">
-                  <label>Nombres</label>
-                  <input className="form-control" type="text" />
-                </div>
+              <div className="form-group mb-3">
+                <label>Apellidos</label>
+                <input
+                  required
+                  onChange={handleChange}
+                  name="apellidos"
+                  className="form-control"
+                  type="text"
+                />
+              </div>
 
-                <div className="form-group mb-3">
-                  <label>Apellidos</label>
-                  <input className="form-control" type="text" />
-                </div>
+              <div className="form-group mb-3">
+                <label>Email</label>
+                <input
+                  required
+                  onChange={handleChange}
+                  name="email"
+                  className="form-control"
+                  type="email"
+                />
+              </div>
 
-                <div className="form-group mb-3">
-                  <label>Email</label>
-                  <input className="form-control" type="text" />
-                </div>
+              <div className="form-group mb-3">
+                <label>Contraseña</label>
+                <input
+                  required
+                  onChange={handleChange}
+                  name="contrasena"
+                  minLength={6}
+                  className="form-control"
+                  type="password"
+                />
+              </div>
 
-                <div className="form-group mb-3">
-                  <label>Usuario</label>
-                  <input className="form-control" type="text" />
-                </div>
-
-                <div className="form-group mb-3">
-                  <label>Contraseña</label>
-                  <input className="form-control" type="text" />
-                </div>
-
-                <div className="form-group mb-3">
-                  <label>Confirme su contraseña</label>
-                  <input className="form-control" type="text" />
-                </div>
-
-                <div className="mt-3 text-end">
-                  {/* <button type="submit" className="btn btn-dark">
-                    Registrarse
-                  </button> */}
-                  <Link to="/ordenes" className="btn btn-dark">
-                    Registrarse
+              <div className="mt-3 text-end">
+                <button type="submit" className="btn btn-dark">
+                  Registrarse
+                </button>
+              </div>
+              <div className="text-end mt-1">
+                <small>
+                  <span> o </span>
+                  <Link to="/iniciar-sesion" className="text-dark">
+                    iniciar sesion
                   </Link>
-                </div>
-                <div className="text-end mt-1">
-                  <small>
-                    <span> o </span>
-                    <Link to="/iniciar-sesion" className="text-dark">
-                      iniciar sesion
-                    </Link>
-                  </small>
-                </div>
-              </form>
-            </div>
+                </small>
+              </div>
+            </form>
           </div>
         </div>
-      </main>
-    );
-  }
-}
+      </div>
+    </main>
+  );
+};
 
 export default RegistrarsePage;
