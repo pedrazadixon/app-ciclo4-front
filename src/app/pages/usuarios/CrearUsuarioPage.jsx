@@ -100,7 +100,8 @@ const CrearUsuarioPage = function () {
                         onChange={handleChange}
                       >
                         <option value="">Seleccionar...</option>
-                        <option value="UsuarioExterno">Usuario Externo</option>
+                        <option value="Usuario Interno">Usuario Interno</option>
+                        <option value="Usuario Externo">Usuario Externo</option>
                         <option value="Administrador">Administrador</option>
 
                         ))

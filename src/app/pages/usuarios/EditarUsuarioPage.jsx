@@ -119,11 +119,25 @@ const EditarUsuarioPage = function () {
                         onChange={handleChange}
                       >
                         <option value="">Seleccionar...</option>
+                        <option value="Usuario Interno">Usuario Interno</option>
                         <option value="UsuarioExterno">Usuario Externo</option>
                         <option value="Administrador">Administrador</option>
 
                         ))
                       </select>
+                    </div>
+                  </div>
+
+                  <div className="col-6">
+                    <div className="mb-3">
+                      <label className="form-label">Contraseña</label>
+                      <input
+                        required
+                        name="contrasena"
+                        type="password"
+                        onChange={handleChange}
+                        className="form-control"
+                      />
                     </div>
                   </div>
 
