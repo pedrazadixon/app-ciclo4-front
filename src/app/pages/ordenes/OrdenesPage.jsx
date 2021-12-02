@@ -29,42 +29,42 @@ const OrdenesPage = function () {
     let res = await axios.get(`/ordenes`);
     let columns = [
       {
-        label: "descripcion",
+        label: "Descripcion",
         field: "descripcion",
         width: 150,
       },
       {
-        label: "nombre",
+        label: "Nombre",
         field: "_usuario",
         width: 100,
       },
       {
-        label: "origen",
+        label: "Origen",
         field: "_origen",
         width: 100,
       },
       {
-        label: "destino",
+        label: "Destino",
         field: "_destino",
         width: 100,
       },
       {
-        label: "peso_kg",
+        label: "Peso (Kgs)",
         field: "peso_kg",
         width: 100,
       },
       {
-        label: "cant_vehiculos",
+        label: "Vehiculos",
         field: "cant_vehiculos",
         width: 100,
       },
       {
-        label: "estado",
+        label: "Estado",
         field: "estado",
         width: 100,
       },
       {
-        label: "acciones",
+        label: "Acciones",
         field: "acciones",
         sort: "disabled",
         width: 330,

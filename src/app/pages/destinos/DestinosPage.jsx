@@ -25,27 +25,27 @@ function DestinosPage() {
     let res = await axios.get(`/destinos`);
     let columns = [
       {
-        label: "origen",
+        label: "Origen",
         field: "origen",
         width: 150,
       },
       {
-        label: "destino",
+        label: "Destino",
         field: "destino",
         width: 150,
       },
       {
-        label: "distancia kms.",
+        label: "Distancia (Kms).",
         field: "distancia_km",
         width: 150,
       },
       {
-        label: "tiempo mins.",
+        label: "Tiempo (Mins).",
         field: "minutos",
         width: 100,
       },
       {
-        label: "acciones",
+        label: "Acciones",
         field: "acciones",
         sort: "disabled",
         width: 180,
@@ -55,6 +55,9 @@ function DestinosPage() {
 
     // agrego botones de acciones
     rows.map((obj) => {
+      obj.minutos = `${obj.minutos} (${parseFloat(obj.minutos / 60).toFixed(
+        1
+      )} h)`;
       return (obj.acciones = (
         <React.Fragment>
           <Link
