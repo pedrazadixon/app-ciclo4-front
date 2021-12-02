@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -24,7 +24,7 @@ const IniciarSesionPage = function () {
 
     setDisableLoginBtn(true);
 
-    setTimeout(() => {
+    let timeoutBtnLogin = setTimeout(() => {
       setDisableLoginBtn(false);
     }, 1500);
 
@@ -38,9 +38,11 @@ const IniciarSesionPage = function () {
 
       localStorage.setItem("usuario", JSON.stringify(res.data.data));
 
+      clearTimeout(timeoutBtnLogin);
+
       return history.push("/ordenes");
     }
-    toast.error("Ocurrio un error.");
+    toast.error("Credenciales incorrectas.");
   };
 
   return (
