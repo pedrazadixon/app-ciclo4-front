@@ -70,7 +70,7 @@ const OrdenesPage = function () {
         label: "acciones",
         field: "acciones",
         sort: "disabled",
-        width: 265,
+        width: 330,
       },
     ];
 
