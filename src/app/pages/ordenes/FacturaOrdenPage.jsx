@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "app/utils/axios";
 import { Link, useParams } from "react-router-dom";
 
 function FacturaOrdenPage() {

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "app/utils/axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
