@@ -24,7 +24,7 @@ class App extends Component {
   render() {
     return (
       <div id="App">
-        <ToastContainer />
+        <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
         <BrowserRouter>
           <Switch>
             <Route exact path="/">
