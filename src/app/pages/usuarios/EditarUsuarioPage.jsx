@@ -132,7 +132,6 @@ const EditarUsuarioPage = function () {
                     <div className="mb-3">
                       <label className="form-label">Contraseña</label>
                       <input
-                        required
                         name="contrasena"
                         type="password"
                         onChange={handleChange}
