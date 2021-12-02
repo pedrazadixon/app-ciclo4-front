@@ -4,6 +4,7 @@ import { Link, useHistory, useParams } from "react-router-dom";
 import axios from "app/utils/axios";
 import { toast } from "react-toastify";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
+import MostrarA from "app/utils/MostrarA";
 
 const EditarUsuarioPage = function () {
   let { id: usuarioId } = useParams();
@@ -102,24 +103,30 @@ const EditarUsuarioPage = function () {
                     </div>
                   </div>
 
-                  <div className="col-6">
-                    <div className="mb-3">
-                      <label className="form-label">Rol</label>
-                      <select
-                        required
-                        className="form-select"
-                        name="rol"
-                        value={form.rol || ""}
-                        onChange={handleChange}
-                      >
-                        <option value="">Seleccionar...</option>
-                        <option value="Usuario Interno">Usuario Interno</option>
-                        <option value="Usuario Externo">Usuario Externo</option>
-                        <option value="Administrador">Administrador</option>
-                        ))
-                      </select>
+                  <MostrarA roles={["Administrador"]}>
+                    <div className="col-6">
+                      <div className="mb-3">
+                        <label className="form-label">Rol</label>
+                        <select
+                          required
+                          className="form-select"
+                          name="rol"
+                          value={form.rol || ""}
+                          onChange={handleChange}
+                        >
+                          <option value="">Seleccionar...</option>
+                          <option value="Usuario Interno">
+                            Usuario Interno
+                          </option>
+                          <option value="Usuario Externo">
+                            Usuario Externo
+                          </option>
+                          <option value="Administrador">Administrador</option>
+                          ))
+                        </select>
+                      </div>
                     </div>
-                  </div>
+                  </MostrarA>
 
                   <div className="col-6">
                     <div className="mb-3">

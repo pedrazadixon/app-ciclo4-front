@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
+import MostrarA from "app/utils/MostrarA";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMapMarkedAlt,
@@ -47,23 +48,27 @@ function AppNavbar() {
                 Ordenes
               </Link>
             </li>
-            <li>
-              <Link
-                to="/destinos"
-                className={`nav-link ${
-                  location.pathname.includes("destinos")
-                    ? "text-white"
-                    : "text-secondary"
-                }`}
-              >
-                <FontAwesomeIcon
-                  icon={faMapMarkedAlt}
-                  size="2x"
-                  className="d-block mx-auto mb-1"
-                />
-                Destinos
-              </Link>
-            </li>
+
+            <MostrarA roles={["Administrador", "Usuario Interno"]}>
+              <li>
+                <Link
+                  to="/destinos"
+                  className={`nav-link ${
+                    location.pathname.includes("destinos")
+                      ? "text-white"
+                      : "text-secondary"
+                  }`}
+                >
+                  <FontAwesomeIcon
+                    icon={faMapMarkedAlt}
+                    size="2x"
+                    className="d-block mx-auto mb-1"
+                  />
+                  Destinos
+                </Link>
+              </li>
+            </MostrarA>
+
             <li>
               <Link
                 to="/usuarios"

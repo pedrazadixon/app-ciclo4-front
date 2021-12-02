@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
 import { MDBDataTableV5 } from "mdbreact";
 import { toast } from "react-toastify";
+import MostrarA from "app/utils/MostrarA";
 
 const UsuariosPage = function () {
   const [dataTable, setDataTable] = useState(null);
@@ -72,12 +73,15 @@ const UsuariosPage = function () {
           >
             Editar
           </Link>
-          <button
-            onClick={() => eliminar(obj)}
-            className="btn btn-sm m-1 btn-danger"
-          >
-            Eliminar
-          </button>
+
+          <MostrarA roles={["Administrador"]}>
+            <button
+              onClick={() => eliminar(obj)}
+              className="btn btn-sm m-1 btn-danger"
+            >
+              Eliminar
+            </button>
+          </MostrarA>
         </React.Fragment>
       ));
     });
@@ -90,10 +94,13 @@ const UsuariosPage = function () {
       <div className="row my-4">
         <div className="col-12 d-flex justify-content-between">
           <h3>Lista de Usuarios</h3>
-          <Link to="/usuarios/crear" className="btn btn-dark">
-            <i className="fas fa-user-plus me-2"></i>
-            Nueva Usuario
-          </Link>
+
+          <MostrarA roles={["Administrador"]}>
+            <Link to="/usuarios/crear" className="btn btn-dark">
+              <i className="fas fa-user-plus me-2"></i>
+              Nueva Usuario
+            </Link>
+          </MostrarA>
         </div>
       </div>
 

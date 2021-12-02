@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
 import { MDBDataTableV5 } from "mdbreact";
+import MostrarA from "app/utils/MostrarA";
 
 const OrdenesPage = function () {
   const [dataTable, setDataTable] = useState(null);
@@ -85,24 +86,31 @@ const OrdenesPage = function () {
           >
             Detalles
           </Link>
-          <Link
-            to={`/ordenes/actualizar/${obj._id}`}
-            className="btn btn-sm m-1 btn-secondary"
-          >
-            Actualizar
-          </Link>
+
+          <MostrarA roles={["Administrador", "Usuario Interno"]}>
+            <Link
+              to={`/ordenes/actualizar/${obj._id}`}
+              className="btn btn-sm m-1 btn-secondary"
+            >
+              Actualizar
+            </Link>
+          </MostrarA>
+
           <Link
             to={`/ordenes/factura/${obj._id}`}
             className="btn btn-sm m-1 btn-primary"
           >
             Factura
           </Link>
-          <button
-            onClick={() => eliminar(obj)}
-            className="btn btn-sm m-1 btn-danger"
-          >
-            Eliminar
-          </button>
+
+          <MostrarA roles={["Administrador", "Usuario Interno"]}>
+            <button
+              onClick={() => eliminar(obj)}
+              className="btn btn-sm m-1 btn-danger"
+            >
+              Eliminar
+            </button>
+          </MostrarA>
         </React.Fragment>
       );
       return obj;
