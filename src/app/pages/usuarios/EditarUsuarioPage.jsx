@@ -5,7 +5,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
 
-
 const EditarUsuarioPage = function () {
   let { id: usuarioId } = useParams();
 
@@ -22,10 +21,10 @@ const EditarUsuarioPage = function () {
       `${process.env.REACT_APP_MINTIC_API_URL}/usuarios/${usuarioId}`
     );
 
-    console.log(res)
+    console.log(res);
 
-    // delete res.data.data._id;
-    // delete res.data.data.__v;
+    delete res.data.data._id;
+    delete res.data.data.__v;
 
     setForm(res.data.data);
   };
@@ -74,12 +73,12 @@ const EditarUsuarioPage = function () {
                     <div className="mb-3">
                       <label className="form-label">Nombres</label>
                       <input
-                      required
-                      value={form.nombres || ""}
-                      name="nombres"
-                      type ="text"
-                      onChange={handleChange}
-                      className="form-control"
+                        required
+                        value={form.nombres || ""}
+                        name="nombres"
+                        type="text"
+                        onChange={handleChange}
+                        className="form-control"
                       />
                     </div>
                   </div>
@@ -122,9 +121,8 @@ const EditarUsuarioPage = function () {
                       >
                         <option value="">Seleccionar...</option>
                         <option value="Usuario Interno">Usuario Interno</option>
-                        <option value="UsuarioExterno">Usuario Externo</option>
+                        <option value="Usuario Externo">Usuario Externo</option>
                         <option value="Administrador">Administrador</option>
-
                         ))
                       </select>
                     </div>
@@ -158,11 +156,6 @@ const EditarUsuarioPage = function () {
       </div>
     </LayoutDashboard>
   );
-
-
-
-
-
-}
+};
 
 export default EditarUsuarioPage;
