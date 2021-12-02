@@ -66,11 +66,7 @@ const App = function () {
             component={EditarDestinoPage}
           />
           <AuthRouter path="/usuarios" exact component={UsuariosPage} />
-          <AuthRouter
-            path="/usuarios/crear"
-            exact
-            component={CrearUsuarioPage}
-          />
+          <Route path="/usuarios/crear" exact component={CrearUsuarioPage} />
           <AuthRouter
             path="/usuarios/editar/:id"
             exact
