@@ -14,9 +14,7 @@ function DetallesOrdenPage() {
   }, []);
 
   const getDetalles = async () => {
-    let res = await axios.get(
-      `${process.env.REACT_APP_MINTIC_API_URL}/ordenes/${ordenId}`
-    );
+    let res = await axios.get(`/ordenes/${ordenId}`);
     setDetalles(res.data.data);
   };
 

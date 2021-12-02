@@ -14,9 +14,7 @@ const OrdenesPage = function () {
   }, []);
 
   const eliminar = async (obj) => {
-    await axios.delete(
-      `${process.env.REACT_APP_MINTIC_API_URL}/ordenes/${obj._id}`
-    );
+    await axios.delete(`/ordenes/${obj._id}`);
     setDataTable((state) => {
       let newRows = state.rows.filter(function (row) {
         return row._id !== obj._id;
@@ -27,9 +25,7 @@ const OrdenesPage = function () {
   };
 
   const makeTable = async () => {
-    let res = await axios.get(
-      `${process.env.REACT_APP_MINTIC_API_URL}/ordenes`
-    );
+    let res = await axios.get(`/ordenes`);
     let columns = [
       {
         label: "descripcion",

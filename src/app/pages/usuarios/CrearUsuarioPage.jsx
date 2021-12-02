@@ -5,7 +5,6 @@ import axios from "app/utils/axios";
 import { toast } from "react-toastify";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
 
-
 const CrearUsuarioPage = function () {
   const history = useHistory();
 
@@ -21,10 +20,7 @@ const CrearUsuarioPage = function () {
 
   const handleSubmit = async function (event) {
     event.preventDefault();
-    const res = await axios.post(
-      `${process.env.REACT_APP_MINTIC_API_URL}/usuarios`,
-      form
-    );
+    const res = await axios.post(`/usuarios`, form);
 
     if (res.data && res.data.status === "success") {
       toast.success("Guardado correctamente.");
@@ -103,7 +99,6 @@ const CrearUsuarioPage = function () {
                         <option value="Usuario Interno">Usuario Interno</option>
                         <option value="Usuario Externo">Usuario Externo</option>
                         <option value="Administrador">Administrador</option>
-
                         ))
                       </select>
                     </div>
@@ -137,6 +132,6 @@ const CrearUsuarioPage = function () {
       </div>
     </LayoutDashboard>
   );
-}
+};
 
 export default CrearUsuarioPage;

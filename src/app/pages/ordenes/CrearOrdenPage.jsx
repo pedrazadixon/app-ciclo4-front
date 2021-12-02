@@ -18,9 +18,7 @@ function CrearOrdenPage() {
   }, []);
 
   const makeRecorridosOptions = async () => {
-    let res = await axios.get(
-      `${process.env.REACT_APP_MINTIC_API_URL}/destinos`
-    );
+    let res = await axios.get(`/destinos`);
     setRecorridos(res.data.data);
   };
 
@@ -41,10 +39,7 @@ function CrearOrdenPage() {
       estado: "Pendiente aceptación",
     };
 
-    const res = await axios.post(
-      `${process.env.REACT_APP_MINTIC_API_URL}/ordenes`,
-      ordenData
-    );
+    const res = await axios.post(`/ordenes`, ordenData);
 
     if (res.data && res.data.status === "success") {
       toast.success("Guardado correctamente.");

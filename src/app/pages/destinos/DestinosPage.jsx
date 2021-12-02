@@ -11,9 +11,7 @@ function DestinosPage() {
   const [precioPorKm, setPrecioPorKm] = useState(0);
 
   const eliminar = async (obj) => {
-    await axios.delete(
-      `${process.env.REACT_APP_MINTIC_API_URL}/destinos/${obj._id}`
-    );
+    await axios.delete(`/destinos/${obj._id}`);
     setDataTable((state) => {
       let newRows = state.rows.filter(function (row) {
         return row._id !== obj._id;
@@ -24,9 +22,7 @@ function DestinosPage() {
   };
 
   const makeTable = async () => {
-    let res = await axios.get(
-      `${process.env.REACT_APP_MINTIC_API_URL}/destinos`
-    );
+    let res = await axios.get(`/destinos`);
     let columns = [
       {
         label: "origen",
@@ -86,9 +82,7 @@ function DestinosPage() {
   }, []);
 
   const getPrecioKm = async () => {
-    let res = await axios.get(
-      `${process.env.REACT_APP_MINTIC_API_URL}/config/precio_km`
-    );
+    let res = await axios.get(`/config/precio_km`);
     setPrecioPorKm(res.data.data.valor);
   };
 

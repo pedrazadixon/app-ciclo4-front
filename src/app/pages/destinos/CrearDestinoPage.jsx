@@ -20,10 +20,7 @@ function CrearDestinoPage() {
 
   const handleSubmit = async function (event) {
     event.preventDefault();
-    const res = await axios.post(
-      `${process.env.REACT_APP_MINTIC_API_URL}/destinos`,
-      form
-    );
+    const res = await axios.post(`/destinos`, form);
 
     if (res.data && res.data.status === "success") {
       toast.success("Guardado correctamente.");

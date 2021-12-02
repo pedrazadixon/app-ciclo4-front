@@ -6,7 +6,6 @@ import LayoutDashboard from "app/layouts/LayoutDashboard";
 import { MDBDataTableV5 } from "mdbreact";
 import { toast } from "react-toastify";
 
-
 const UsuariosPage = function () {
   const [dataTable, setDataTable] = useState(null);
 
@@ -14,9 +13,8 @@ const UsuariosPage = function () {
     makeTable();
   }, []);
 
-
   const eliminar = async (obj) => {
-    await axios.delete(`${process.env.REACT_APP_MINTIC_API_URL}/usuarios/${obj._id}`);
+    await axios.delete(`/usuarios/${obj._id}`);
     setDataTable((state) => {
       let newRows = state.rows.filter(function (row) {
         return row._id !== obj._id;
@@ -26,9 +24,8 @@ const UsuariosPage = function () {
     toast.success("Eliminado correctamente.");
   };
 
-
   const makeTable = async () => {
-    let res = await axios.get(`${process.env.REACT_APP_MINTIC_API_URL}/usuarios`);
+    let res = await axios.get(`/usuarios`);
     let columns = [
       {
         label: "Nombres",
@@ -88,8 +85,6 @@ const UsuariosPage = function () {
     setDataTable({ columns, rows });
   };
 
-
-
   return (
     <LayoutDashboard>
       <div className="row my-4">
@@ -118,16 +113,18 @@ const UsuariosPage = function () {
                     </div>
                   );
                 } else {
-                  return (<MDBDataTableV5
-                    hover
-                    entries={5}
-                    data={dataTable}
-                    searchTop
-                    searchBottom={false}
-                    scrollX
-                    searchLabel="Buscar..."
-                    noRecordsFoundLabel="No se encontraron datos."
-                  />)
+                  return (
+                    <MDBDataTableV5
+                      hover
+                      entries={5}
+                      data={dataTable}
+                      searchTop
+                      searchBottom={false}
+                      scrollX
+                      searchLabel="Buscar..."
+                      noRecordsFoundLabel="No se encontraron datos."
+                    />
+                  );
                 }
               })()}
             </div>
@@ -136,10 +133,6 @@ const UsuariosPage = function () {
       </div>
     </LayoutDashboard>
   );
-
-
-}
-
-
+};
 
 export default UsuariosPage;

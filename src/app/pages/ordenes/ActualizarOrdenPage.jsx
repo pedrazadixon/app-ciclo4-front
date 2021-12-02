@@ -19,9 +19,7 @@ function ActualizarOrdenPage() {
   }, []);
 
   const getDetalles = async () => {
-    let res = await axios.get(
-      `${process.env.REACT_APP_MINTIC_API_URL}/ordenes/${ordenId}`
-    );
+    let res = await axios.get(`/ordenes/${ordenId}`);
     setDetalles(res.data.data);
   };
 
@@ -35,10 +33,7 @@ function ActualizarOrdenPage() {
 
   const handleSubmit = async function (event) {
     event.preventDefault();
-    const res = await axios.patch(
-      `${process.env.REACT_APP_MINTIC_API_URL}/ordenes/${ordenId}`,
-      form
-    );
+    const res = await axios.patch(`/ordenes/${ordenId}`, form);
 
     if (res.data && res.data.status === "success") {
       toast.success("Guardado correctamente.");

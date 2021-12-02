@@ -17,9 +17,7 @@ function EditarDestinoPage() {
   }, []);
 
   const getFormData = async () => {
-    let res = await axios.get(
-      `${process.env.REACT_APP_MINTIC_API_URL}/destinos/${destinoId}`
-    );
+    let res = await axios.get(`/destinos/${destinoId}`);
 
     delete res.data.data._id;
     delete res.data.data.__v;
@@ -37,10 +35,7 @@ function EditarDestinoPage() {
 
   const handleSubmit = async function (event) {
     event.preventDefault();
-    const res = await axios.put(
-      `${process.env.REACT_APP_MINTIC_API_URL}/destinos/${destinoId}`,
-      form
-    );
+    const res = await axios.put(`/destinos/${destinoId}`, form);
 
     if (res.data && res.data.status === "success") {
       toast.success("Guardado correctamente.");

@@ -13,9 +13,7 @@ function PrecioKmPage() {
   }, []);
 
   const getFormData = async () => {
-    let res = await axios.get(
-      `${process.env.REACT_APP_MINTIC_API_URL}/config/precio_km`
-    );
+    let res = await axios.get(`/config/precio_km`);
 
     delete res.data.data._id;
     delete res.data.data.__v;
@@ -33,10 +31,7 @@ function PrecioKmPage() {
 
   const handleSubmit = async function (event) {
     event.preventDefault();
-    const res = await axios.put(
-      `${process.env.REACT_APP_MINTIC_API_URL}/config/precio_km`,
-      form
-    );
+    const res = await axios.put(`/config/precio_km`, form);
 
     if (res.data && res.data.status === "success") {
       return toast.success("Guardado correctamente.");

@@ -4,9 +4,7 @@ import axios from "app/utils/axios";
 import { Link, useParams } from "react-router-dom";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
 
-
 const DetallesUsuarioPage = function () {
-
   let { id: usuarioId } = useParams();
   const [detalles, setDetalles] = useState({ usuario: {}, destino: {} });
 
@@ -15,9 +13,7 @@ const DetallesUsuarioPage = function () {
   }, []);
 
   const getDetalles = async () => {
-    let res = await axios.get(
-      `${process.env.REACT_APP_MINTIC_API_URL}/usuarios/${usuarioId}`
-    );
+    let res = await axios.get(`/usuarios/${usuarioId}`);
     setDetalles(res.data.data);
   };
 
@@ -25,7 +21,9 @@ const DetallesUsuarioPage = function () {
     <LayoutDashboard>
       <div className="row my-4">
         <div className="col-12 d-flex justify-content-between">
-          <h3>Detalles Usuario {detalles.nombres} {detalles.apellidos}</h3>
+          <h3>
+            Detalles Usuario {detalles.nombres} {detalles.apellidos}
+          </h3>
         </div>
       </div>
       <div className="row">
@@ -79,6 +77,6 @@ const DetallesUsuarioPage = function () {
       </div>
     </LayoutDashboard>
   );
-}
+};
 
 export default DetallesUsuarioPage;

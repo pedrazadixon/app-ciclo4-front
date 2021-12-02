@@ -19,16 +19,12 @@ function FacturaOrdenPage() {
   };
 
   const getPrecioKm = async () => {
-    let res = await axios.get(
-      `${process.env.REACT_APP_MINTIC_API_URL}/config/precio_km`
-    );
+    let res = await axios.get(`/config/precio_km`);
     setPrecioPorKm(res.data.data.valor);
   };
 
   const getDetalles = async () => {
-    let res = await axios.get(
-      `${process.env.REACT_APP_MINTIC_API_URL}/ordenes/${ordenId}`
-    );
+    let res = await axios.get(`/ordenes/${ordenId}`);
     setDetalles(res.data.data);
   };
 

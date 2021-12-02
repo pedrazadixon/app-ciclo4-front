@@ -28,10 +28,7 @@ const IniciarSesionPage = function () {
       setDisableLoginBtn(false);
     }, 1500);
 
-    const res = await axios.post(
-      `${process.env.REACT_APP_MINTIC_API_URL}/usuarios/iniciar-sesion`,
-      form
-    );
+    const res = await axios.post(`/usuarios/iniciar-sesion`, form);
 
     if (res.data && res.data.status === "success") {
       toast.success("Bienvenido.");

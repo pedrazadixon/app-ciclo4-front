@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  // baseURL: "https://some-domain.com/api/",
+  baseURL: process.env.REACT_APP_MINTIC_API_URL,
 });
 
 axiosInstance.interceptors.request.use(
