@@ -21,8 +21,6 @@ const EditarUsuarioPage = function () {
       `${process.env.REACT_APP_MINTIC_API_URL}/usuarios/${usuarioId}`
     );
 
-    console.log(res);
-
     delete res.data.data._id;
     delete res.data.data.__v;
 
