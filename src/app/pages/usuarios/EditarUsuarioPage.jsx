@@ -22,8 +22,10 @@ const EditarUsuarioPage = function () {
       `${process.env.REACT_APP_MINTIC_API_URL}/usuarios/${usuarioId}`
     );
 
-    delete res.data.data._id;
-    delete res.data.data.__v;
+    console.log(res)
+
+    // delete res.data.data._id;
+    // delete res.data.data.__v;
 
     setForm(res.data.data);
   };
@@ -54,7 +56,7 @@ const EditarUsuarioPage = function () {
     <LayoutDashboard>
       <div className="row my-4">
         <div className="col-12 d-flex justify-content-between">
-          <h3>Editar Usuario {form.nombres} {form.apellidos}</h3>
+          <h3>Editar Usuario</h3>
         </div>
       </div>
       <div className="row">

@@ -85,8 +85,9 @@ function AppNavbar() {
 
           <div>
             <p className="my-0 me-3">
-              {usuarioLogueado.nombres} {usuarioLogueado.apellidos} (
-              {usuarioLogueado.rol})
+              {usuarioLogueado ? usuarioLogueado.nombres : ""}{" "}
+              {usuarioLogueado ? usuarioLogueado.apellidos : ""} (
+              {usuarioLogueado ? usuarioLogueado.rol : ""})
             </p>
           </div>
 

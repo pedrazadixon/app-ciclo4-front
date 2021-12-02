@@ -1,7 +1,7 @@
 import React from "react";
 import "sass/app.css";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-import AuthRouter from "./AuthRouter";
+import ProtectedRoute from "./ProtectedRoute";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Error404 from "@/Error404";
@@ -32,52 +32,52 @@ const App = function () {
           </Route>
           <Route path="/iniciar-sesion" exact component={IniciarSesionPage} />
           <Route path="/registrarse" exact component={RegistrarsePage} />
-          <AuthRouter path="/ordenes" exact component={OrdenesPage} />
+          <ProtectedRoute path="/ordenes" exact component={OrdenesPage} />
           <Route path="/ordenes/crear" exact component={CrearOrdenPage} />
-          <AuthRouter
+          <ProtectedRoute
             path="/ordenes/actualizar/:id"
             exact
             component={ActualizarOrdenPage}
           />
-          <AuthRouter
+          <ProtectedRoute
             path="/ordenes/detalles/:id"
             exact
             component={DetallesOrdenPage}
           />
-          <AuthRouter
+          <ProtectedRoute
             path="/ordenes/factura/:id"
             exact
             component={FacturaOrdenPage}
           />
-          <AuthRouter path="/destinos" exact component={DestinosPage} />
-          <AuthRouter
+          <ProtectedRoute path="/destinos" exact component={DestinosPage} />
+          <ProtectedRoute
             path="/destinos/crear"
             exact
             component={CrearDestinoPage}
           />
-          <AuthRouter
+          <ProtectedRoute
             path="/destinos/precio-km"
             exact
             component={PrecioKmPage}
           />
-          <AuthRouter
+          <ProtectedRoute
             path="/destinos/editar/:id"
             exact
             component={EditarDestinoPage}
           />
-          <AuthRouter path="/usuarios" exact component={UsuariosPage} />
+          <ProtectedRoute path="/usuarios" exact component={UsuariosPage} />
           <Route path="/usuarios/crear" exact component={CrearUsuarioPage} />
-          <AuthRouter
+          <ProtectedRoute
             path="/usuarios/editar/:id"
             exact
             component={EditarUsuarioPage}
           />
-          <AuthRouter
+          <ProtectedRoute
             path="/usuarios/detalles/:id"
             exact
             component={DetallesUsuarioPage}
           />
-          <AuthRouter exact component={Error404} />
+          <ProtectedRoute exact component={Error404} />
         </Switch>
       </BrowserRouter>
     </div>
