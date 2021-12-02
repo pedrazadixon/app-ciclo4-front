@@ -51,7 +51,7 @@ const IniciarSesionPage = function () {
           <div className="card-body">
             <form onSubmit={handleSubmit} className="px-5 py-3">
               <div className="form-group mb-3">
-                <label>Usuario</label>
+                <label>Email</label>
                 <input
                   onChange={handleChange}
                   required
