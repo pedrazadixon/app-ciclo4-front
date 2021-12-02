@@ -1,90 +1,141 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
 
-class CrearUsuarioPage extends React.Component {
-  render() {
-    return (
-      <LayoutDashboard>
-        <div className="row my-4">
-          <div className="col-12 d-flex justify-content-between">
-            <h3>Nuevo Usuario</h3>
-          </div>
-        </div>
 
-        <div className="row">
-          <div className="col-12">
-            <p>Por favor diligencie la informacion del usuario.</p>
-          </div>
-        </div>
+const CrearUsuarioPage = function () {
+  const history = useHistory();
 
-        <div className="row">
-          <div className="col-12">
-            <div className="card">
-              <div className="card-body">
+  const [form, setForm] = useState({});
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async function (event) {
+    event.preventDefault();
+    const res = await axios.post(
+      `${process.env.REACT_APP_MINTIC_API_URL}/usuarios`,
+      form
+    );
+
+    if (res.data && res.data.status === "success") {
+      toast.success("Guardado correctamente.");
+      return history.push("/usuarios");
+    }
+    toast.error("Ocurrio un error.");
+  };
+
+  return (
+    <LayoutDashboard>
+      <div className="row my-4">
+        <div className="col-12 d-flex justify-content-between">
+          <h3>Nuevo Usuario</h3>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-12">
+          <p>Por favor diligencie la informacion del usuario.</p>
+        </div>
+      </div>
+
+      <div className="row">
+        <div className="col-12">
+          <div className="card">
+            <div className="card-body">
+              <form onSubmit={handleSubmit}>
                 <div className="row">
                   <div className="col-6">
                     <div className="mb-3">
                       <label className="form-label">Nombres</label>
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        required
+                        name="nombres"
+                        onChange={handleChange}
+                        className="form-control"
+                      />
                     </div>
                   </div>
 
                   <div className="col-6">
                     <div className="mb-3">
                       <label className="form-label">Apellidos</label>
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        required
+                        name="apellidos"
+                        onChange={handleChange}
+                        className="form-control"
+                      />
                     </div>
                   </div>
-
                   <div className="col-6">
                     <div className="mb-3">
                       <label className="form-label">Email</label>
-                      <input type="email" className="form-control" />
+                      <input
+                        type="email"
+                        required
+                        name="email"
+                        onChange={handleChange}
+                        className="form-control"
+                      />
                     </div>
                   </div>
-
                   <div className="col-6">
                     <div className="mb-3">
                       <label className="form-label">Rol</label>
-                      <select className="form-select">
+                      <select
+                        required
+                        className="form-select"
+                        name="rol"
+                        onChange={handleChange}
+                      >
                         <option value="">Seleccionar...</option>
-                        <option value="1">Opcion 1</option>
-                        <option value="2">Opcion 2</option>
+                        <option value="UsuarioExterno">Usuario Externo</option>
+                        <option value="Administrador">Administrador</option>
+
+                        ))
                       </select>
                     </div>
                   </div>
-
                   <div className="col-6">
                     <div className="mb-3">
                       <label className="form-label">Contraseña</label>
-                      <input type="password" className="form-control" />
-                    </div>
-                  </div>
-
-                  <div className="col-6">
-                    <div className="mb-3">
-                      <label className="form-label">Repita Contraseña</label>
-                      <input type="password" className="form-control" />
+                      <input
+                        type="password"
+                        required
+                        name="contrasena"
+                        onChange={handleChange}
+                        className="form-control"
+                      />
                     </div>
                   </div>
 
                   <div className="col-12 d-flex justify-content-end my-3">
-                    <Link to="/usuarios">
-                      <button className="btn btn-danger ms-3">Cancelar</button>
+                    <Link className="btn btn-danger ms-3" to="/usuarios">
+                      Cancelar
                     </Link>
-                    <Link to="/usuarios">
-                      <button className="btn btn-success ms-3">Guardar</button>
-                    </Link>
+                    <button type="submit" className="btn btn-success ms-3">
+                      Guardar
+                    </button>
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
           </div>
         </div>
-      </LayoutDashboard>
-    );
-  }
+      </div>
+    </LayoutDashboard>
+  );
 }
 
 export default CrearUsuarioPage;

@@ -6,11 +6,17 @@ import LayoutDashboard from "app/layouts/LayoutDashboard";
 import { MDBDataTableV5 } from "mdbreact";
 import { toast } from "react-toastify";
 
-function UsuariosPage() {
+
+const UsuariosPage = function () {
   const [dataTable, setDataTable] = useState(null);
 
+  useEffect(() => {
+    makeTable();
+  }, []);
+
+
   const eliminar = async (obj) => {
-    await axios.delete(`http://localhost:3001/usuarios/${obj._id}`);
+    await axios.delete(`${process.env.REACT_APP_MINTIC_API_URL}/usuarios/${obj._id}`);
     setDataTable((state) => {
       let newRows = state.rows.filter(function (row) {
         return row._id !== obj._id;
@@ -22,7 +28,7 @@ function UsuariosPage() {
 
 
   const makeTable = async () => {
-    let res = await axios.get("http://localhost:3001/usuarios");
+    let res = await axios.get(`${process.env.REACT_APP_MINTIC_API_URL}/usuarios`);
     let columns = [
       {
         label: "Nombres",
@@ -82,9 +88,6 @@ function UsuariosPage() {
     setDataTable({ columns, rows });
   };
 
-  useEffect(() => {
-    makeTable();
-  }, []);
 
 
   return (

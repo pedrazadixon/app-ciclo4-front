@@ -1,15 +1,31 @@
 import * as React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import LayoutDashboard from "app/layouts/LayoutDashboard";
 
-function DetallesUsuarioPage() {
+
+const DetallesUsuarioPage = function () {
+
   let { id: usuarioId } = useParams();
+  const [detalles, setDetalles] = useState({ usuario: {}, destino: {} });
+
+  useEffect(() => {
+    getDetalles();
+  }, []);
+
+  const getDetalles = async () => {
+    let res = await axios.get(
+      `${process.env.REACT_APP_MINTIC_API_URL}/usuarios/${usuarioId}`
+    );
+    setDetalles(res.data.data);
+  };
 
   return (
     <LayoutDashboard>
       <div className="row my-4">
         <div className="col-12 d-flex justify-content-between">
-          <h3>Detalles Usuario {usuarioId} </h3>
+          <h3>Detalles Usuario {detalles.nombres} {detalles.apellidos}</h3>
         </div>
       </div>
       <div className="row">
@@ -22,31 +38,31 @@ function DetallesUsuarioPage() {
           <div className="card">
             <div className="card-body px-4">
               <div className="row">
-                <table className="table">
+                <table className="table table-hover">
                   <tbody>
                     <tr>
                       <td className="fw-bold">ID</td>
-                      <td>1</td>
+                      <td>{detalles._id}</td>
                     </tr>
 
                     <tr>
                       <td className="fw-bold">Nombres</td>
-                      <td>manuel armando</td>
+                      <td>{detalles.nombres}</td>
                     </tr>
 
                     <tr>
                       <td className="fw-bold">Apellidos</td>
-                      <td>puertas rojas</td>
+                      <td>{detalles.apellidos}</td>
                     </tr>
 
                     <tr>
                       <td className="fw-bold">Email</td>
-                      <td>uusuario@mail.com</td>
+                      <td>{detalles.email}</td>
                     </tr>
 
                     <tr>
                       <td className="fw-bold">Rol</td>
-                      <td>usuario_final</td>
+                      <td>{detalles.rol}</td>
                     </tr>
                   </tbody>
                 </table>
