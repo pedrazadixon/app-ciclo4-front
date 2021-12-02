@@ -8,6 +8,8 @@ import LayoutDashboard from "app/layouts/LayoutDashboard";
 function CrearOrdenPage() {
   const history = useHistory();
 
+  const usuarioLogueado = JSON.parse(localStorage.getItem("usuario"));
+
   const [form, setForm] = useState({});
   const [recorridos, setRecorridos] = useState([]);
 
@@ -35,7 +37,7 @@ function CrearOrdenPage() {
 
     let ordenData = {
       ...form,
-      usuario: "61a6d45f8b46196ac2431a9c", // todo: cambiar por id usuario logueado
+      usuario: usuarioLogueado._id, // todo: cambiar por id usuario logueado
       estado: "Pendiente aceptación",
     };
 

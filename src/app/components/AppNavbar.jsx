@@ -11,6 +11,8 @@ function AppNavbar() {
   const location = useLocation();
   const history = useHistory();
 
+  const usuarioLogueado = JSON.parse(localStorage.getItem("usuario"));
+
   const cerrarSesion = () => {
     localStorage.removeItem("usuario");
     history.push("/iniciar-sesion");
@@ -82,7 +84,10 @@ function AppNavbar() {
           </ul>
 
           <div>
-            <p className="my-0 me-3">Nombre Apellido (Rol)</p>
+            <p className="my-0 me-3">
+              {usuarioLogueado.nombres} {usuarioLogueado.apellidos} (
+              {usuarioLogueado.rol})
+            </p>
           </div>
 
           <div className="text-end">
